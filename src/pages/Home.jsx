@@ -44,6 +44,12 @@ export default function Hero() {
             >
               Start Chatting
             </Link>
+            <Link
+              to="/disclaimer"
+              className="text-blue-600 py-3 px-6 border border-blue-600 rounded-full hover:bg-blue-600 hover:text-white"
+            >
+              Important Disclaimer
+            </Link>
           </div>
         </div>
         <div className="flex-1 hidden md:block">
