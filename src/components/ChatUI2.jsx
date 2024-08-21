@@ -11,6 +11,11 @@ const ChatUI = () => {
   const hasInitialized = useRef(false);
   const [isMobileMenuActivated, setIsMobileMenuActivated] = useState(false);
 
+  const backendUrl = import.meta.env.VITE_API_URL;
+  const localUrl = "http://localhost:8000/generate";
+  const currentEnv = import.meta.env.VITE_DEPLOYMENT;
+  const url = currentEnv === "PROD" ? backendUrl : localUrl;
+
   useEffect(() => {
     const mediaQuery = window.matchMedia("(max-width: 768px)");
 
@@ -44,7 +49,7 @@ const ChatUI = () => {
     async (newMessageId) => {
       setIsStreaming(true);
       try {
-        const response = await fetch("http://localhost:8000/generate", {
+        const response = await fetch(url, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
