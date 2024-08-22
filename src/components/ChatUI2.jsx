@@ -54,7 +54,10 @@ const ChatUI = () => {
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({ query: inputMessage }),
+          body: JSON.stringify({
+            query: inputMessage,
+            conversationHistory: getCurrentConversation().messages || [],
+          }),
         });
 
         if (!response.body) {
