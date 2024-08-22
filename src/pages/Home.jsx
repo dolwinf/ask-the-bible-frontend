@@ -24,20 +24,12 @@ export default function Hero() {
           </Link>
 
           <h2 className="text-3xl md:text-5xl font-bold text-gray-900 mb-4">
-            Welcome to Ask Scriptures!
+            Welcome to Bible Convo!
           </h2>
           <p className="text-gray-600 text-base md:text-lg mb-8">
-            I'm an AI assistant here to help you answer questions related to the Bible and
-            scripture.
+            I'm an AI assistant here to help you study the Bible and answer any questions
+            you have.
           </p>
-          {/* <div className="flex space-x-4">
-            <a
-              href="#"
-              className="text-blue-600 py-3 px-6 border border-blue-600 rounded-full hover:bg-blue-600 hover:text-white"
-            >
-              Start Chatting
-            </a>
-          </div> */}
           <div className="flex space-x-4">
             <Link
               to="/chat"
