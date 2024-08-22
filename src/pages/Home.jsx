@@ -13,15 +13,16 @@ export default function Hero() {
 
   return (
     <section className="bg-gray-50 h-screen flex items-center justify-center px-4 md:px-0">
-      <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center">
+      <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center ">
         <div
           className={`flex-1 ${
             textVisible ? "translate-x-0 opacity-100" : "-translate-x-full opacity-0"
           } transition-all duration-1000`}
         >
-          <h1 className="text-blue-500 text-sm font-semibold mb-2 uppercase">
-            Ask the Bible
-          </h1>
+          <Link to="/faq" className="text-blue-500 text-sm font-semibold uppercase">
+            Bible Chat App - Frequently asked Questions
+          </Link>
+
           <h2 className="text-3xl md:text-5xl font-bold text-gray-900 mb-4">
             Welcome to Ask Scriptures!
           </h2>
@@ -53,11 +54,7 @@ export default function Hero() {
           </div>
         </div>
         <div className="flex-1 hidden md:block">
-          <img
-            src={main} // Replace with your image path
-            alt="Bible"
-            className="max-w-full h-auto rounded-2xl"
-          />
+          <img src={main} alt="Bible" className="max-w-full h-auto rounded-2xl" />
         </div>
       </div>
     </section>
