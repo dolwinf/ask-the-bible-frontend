@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef, useCallback } from "react";
 import { MessageSquare, Send, Menu, Plus, Trash2 } from "lucide-react";
 import ReactMarkDown from "react-markdown";
+import SuggestionBox from "./SuggestionBox";
 
 const ChatUI = () => {
   const [conversations, setConversations] = useState([]);
@@ -10,11 +11,21 @@ const ChatUI = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const hasInitialized = useRef(false);
   const [isMobileMenuActivated, setIsMobileMenuActivated] = useState(false);
+  const [suggestions, setSuggestions] = useState([
+    "Share a Bible verse about faith",
+    "Explain the meaning of Psalm 23",
+    "What does the Bible say about forgiveness?",
+    "Discuss the significance of Jesus' resurrection",
+  ]);
 
   const backendUrl = import.meta.env.VITE_API_URL;
   const localUrl = "http://localhost:8000/generate";
   const currentEnv = import.meta.env.VITE_DEPLOYMENT;
   const url = currentEnv === "PROD" ? backendUrl : localUrl;
+
+  const handleSuggestionClick = (suggestion) => {
+    setInputMessage(suggestion);
+  };
 
   useEffect(() => {
     const mediaQuery = window.matchMedia("(max-width: 768px)");
@@ -126,7 +137,14 @@ const ChatUI = () => {
       const newConversation = {
         id: newConversationId,
         title: "New Chat",
-        messages: [],
+        messages: [
+          {
+            id: Date.now(),
+            type: "assistant",
+            content:
+              "Hello! ✨ Welcome to Bible convo!📖 I'm glad you're here 🙏. I can help you with anything related to scripture and theological concepts ✝️. Feel free to ask, any question you'd like! 😊",
+          },
+        ],
       };
       return [...prevConversations, newConversation];
     });
@@ -217,6 +235,15 @@ const ChatUI = () => {
 
       {/* Main chat area */}
       <div className="flex-1 flex flex-col overflow-hidden">
+        {/* <div className="p-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+          {suggestions.map((suggestion, index) => (
+            <SuggestionBox
+              key={index}
+              suggestion={suggestion}
+              onClick={handleSuggestionClick}
+            />
+          ))}
+        </div> */}
         {/* Chat messages */}
         <div className="flex-1 overflow-y-auto p-4 space-y-4">
           {getCurrentConversation().messages.map((message) => (
