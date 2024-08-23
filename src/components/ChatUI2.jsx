@@ -142,7 +142,7 @@ const ChatUI = () => {
             id: Date.now(),
             type: "assistant",
             content:
-              "Hello! ✨ Welcome to Bible convo!📖 I'm glad you're here 🙏. I can help you with anything related to scripture and theological concepts ✝️. Feel free to ask, any question you'd like! 😊",
+              "Hello! ✨ Welcome to Bible convo!📖 I'm glad you're here 🙏. I can help you with anything related to scripture and theological concepts ✝️. Feel free to ask any question you'd like! 😊",
           },
         ],
       };
