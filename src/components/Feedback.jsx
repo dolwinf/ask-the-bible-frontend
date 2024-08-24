@@ -16,10 +16,30 @@ const options = {
 const FeedbackForm = ({ onClose }) => {
   const [feedback, setFeedback] = useState("");
 
-  const handleSendFeedback = () => {
-    console.log("Feedback sent:", feedback);
+  const handleSendFeedback = async () => {
+    const backendUrl = "https://ask-the-bible-backend.vercel.app/submit-feedback";
+    const localUrl = "http://localhost:8000/submit-feedback";
+    const currentEnv = import.meta.env.VITE_DEPLOYMENT;
+    const url = currentEnv === "PROD" ? backendUrl : localUrl;
     toast.success("Thankyou for your feedback! 🙏", options);
     onClose();
+    try {
+      const response = await fetch(url, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ message: feedback }),
+      });
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      await response.json();
+    } catch (error) {
+      console.error("Error submitting feedback:", error);
+    }
   };
 
   return (
