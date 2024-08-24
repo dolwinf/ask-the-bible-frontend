@@ -2,6 +2,7 @@ import { useState, useEffect, useRef, useCallback } from "react";
 import { MessageSquare, Send, Menu, Plus, Trash2 } from "lucide-react";
 import ReactMarkDown from "react-markdown";
 import SuggestionBox from "./SuggestionBox";
+import FeedbackForm from "./Feedback";
 
 const ChatUI = () => {
   const [conversations, setConversations] = useState([]);
@@ -17,6 +18,7 @@ const ChatUI = () => {
     "What does the Bible say about forgiveness?",
     "Discuss the significance of Jesus' resurrection",
   ]);
+  const [isFeedbackOpen, setIsFeedbackOpen] = useState(false);
 
   const backendUrl = import.meta.env.VITE_API_URL;
   const localUrl = "http://localhost:8000/generate";
@@ -293,7 +295,16 @@ const ChatUI = () => {
           </div>
         </div>
       </div>
+      {/* Feedback button */}
+      <button
+        onClick={() => setIsFeedbackOpen(!isFeedbackOpen)}
+        className="fixed bottom-24 right-4 text-blue-600 py-3 px-6 border border-blue-600 rounded-full hover:bg-blue-600 hover:text-white"
+      >
+        Feedback
+      </button>
 
+      {/* Feedback form */}
+      {isFeedbackOpen && <FeedbackForm onClose={() => setIsFeedbackOpen(false)} />}
       {/* Mobile menu button */}
       <button
         onClick={() => setIsSidebarOpen(!isSidebarOpen)}

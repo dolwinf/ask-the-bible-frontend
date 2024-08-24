@@ -5,6 +5,8 @@ import Faq from "./pages/Faq";
 import NotFound from "./pages/NotFound";
 import { Route, Routes, useLocation } from "react-router-dom";
 import BackArrow from "./components/BackButton";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   const location = useLocation();
@@ -16,6 +18,7 @@ function App() {
 
   return (
     <div className="font-poppins">
+      <ToastContainer />
       {showBackArrow && <BackArrow />}
       <Routes>
         <Route path="/" element={<Home />} />
