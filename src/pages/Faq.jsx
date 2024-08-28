@@ -26,10 +26,11 @@ const Faq = () => {
       </div>
       <div className="bg-white p-6 rounded-lg shadow-md mb-6">
         <h3 className="text-xl font-semibold text-blue-700 mb-4">
-          Are my questions logged?
+          What about my privacy?
         </h3>
         <p className="text-gray-800 mb-4">
-          No, your questions are not logged. Your privacy is respected and I believe in
+          Because you are not required to signup or login, there's no way one could
+          possibly know your identity. Your privacy is respected and I believe in
           providing a safe space for you to explore your faith anonymously.
         </p>
       </div>
@@ -51,9 +52,8 @@ const Faq = () => {
         </h3>
         <p className="text-gray-800 mb-4">
           This app is free, and it doesn't require you to provide any personal information
-          for login. You can explore the Bible and ask questions anonymously, knowing that
-          your queries aren't logged. You interact with the application anonymously and
-          without registering or signing up.
+          for login. You can explore the Bible and ask questions anonymously without
+          registering or signing up.
         </p>
       </div>
     </div>
